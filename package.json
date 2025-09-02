@@ -1,6 +1,6 @@
 {
   "name": "josuke",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A NPM library to validate email addresses.",
   "license": "UNLICENSED",
   "author": "Guhan <gukkey@protonmail.com>",
