@@ -1,0 +1,33 @@
+{
+  "name": "josuke",
+  "version": "0.0.1",
+  "description": "A NPM library to validate email addresses.",
+  "license": "ISC",
+  "author": "Guhan <gukkey@protonmail.com>",
+  "type": "module",
+  "scripts": {
+    "test": "mocha tests/test.js",
+    "build:esm": "mkdir dist\\esm && copy index.js dist\\esm\\index.js",
+    "build:cjs": "babel index.js --out-file dist\\cjs\\index.js",
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:types": "tsc"
+  },
+  "main": "dist/cjs/index.js",
+   "types": "types/index.d.ts",
+  "exports": {
+    "require": "./dist/cjs/index.js",
+    "import": "./dist/esm/index.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.28.3",
+    "@babel/core": "^7.28.3",
+    "@babel/preset-env": "^7.28.3",
+    "chai": "^6.0.1",
+    "mocha": "^11.7.2",
+    "typescript": "^5.9.2"
+  },
+  "keywords": [
+    "email",
+    "validation"
+  ]
+}
