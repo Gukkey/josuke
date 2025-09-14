@@ -109,30 +109,48 @@ yarn add josuke
 ### ES Modules (ESM)
 
 ```javascript
-import { validate } from "josuke";
+import { validate } from 'josuke'
 
-console.log(validate("user@example.com")); // true
-console.log(validate("invalid.email")); // false
-console.log(validate("user@invalid.tld")); // false
+const valid = ['user@example.com', 'user1@example.com']
+const invalid = ['invalid.email', 'user@invalid.tld']
+
+console.log(validate('user@example.com')) // true
+console.log(validate('invalid.email')) // false
+console.log(validate('user@invalid.tld')) // false
+console.log(validate(valid)) // true
+console.log(validate(invalid)) // false
 ```
 
 ### CommonJS
 
 ```javascript
-const { validate } = require("josuke");
+const { validate } = require('josuke')
 
-console.log(validate("user@example.com")); // true
-console.log(validate("invalid.email")); // false
+const valid = ['user@example.com', 'user1@example.com']
+const invalid = ['invalid.email', 'user@invalid.tld']
+
+console.log(validate('user@example.com')) // true
+console.log(validate('invalid.email')) // false
+console.log(validate(valid)) // true
+console.log(validate(invalid)) // false
 ```
 
 ### TypeScript
 
 ```typescript
-import { validate } from "josuke";
+import { validate } from 'josuke'
 
-const email: string = "user@example.com";
-const isValid: boolean = validate(email);
-console.log(isValid); // true
+const email: string = 'user@example.com'
+const validEmails: string[] = ['user@example.com', 'user1@example.com']
+const invalidEmails: string[] = ['invalid.email', 'user@invalid.tld']
+
+const firstValid: boolean = validate(email)
+const secondValid: boolean = validate(validEmails)
+const thirdValid: boolean = validate(invalidEmails)
+
+console.log(firstValid) // true
+console.log(secondValid) // true
+console.log(thirdValid) // false
 ```
 
 ### Validation Rules
