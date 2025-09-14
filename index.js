@@ -1,11 +1,43 @@
 const regex =
   /^[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/
 
+/**
+ *
+ * @param {string|string[]} emailAddress - String or Array of email addresses
+ * @returns {boolean} true if email or all emails in array are valid else false
+ */
+
 function validate(emailAddress) {
   if (!emailAddress) {
     return false
   }
 
+  if (Array.isArray(emailAddress)) {
+    return validateEmailArray(emailAddress)
+  } else if (typeof emailAddress === 'string') {
+    return validateEmailString(emailAddress)
+  } else {
+    return false
+  }
+}
+
+/**
+ *
+ * @param {string[]} emailArray
+ * @returns {boolean} true if all emails in array are valid else false
+ */
+
+function validateEmailArray(emailArray) {
+  return emailArray.every(email => typeof email === 'string' && validateEmailString(email))
+}
+
+/**
+ *
+ * @param {string} emailAddress
+ * @returns {boolean} true if the email address is valid else false
+ */
+
+function validateEmailString(emailAddress) {
   const emailAddressParts = emailAddress.split('@')
 
   if (emailAddressParts.length !== 2) {
